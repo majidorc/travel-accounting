@@ -14,7 +14,7 @@ const navLinks = [
   { href: '/products', label: 'Product List' },
 ];
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="bg-cream dark:bg-black min-h-screen transition-colors">
