@@ -2,7 +2,7 @@ const columns = [
   'SKU', 'ID', 'Company', 'Tour', 'Adult Net', 'Child Net', 'Remark', 'Adult Sell', 'Child Sell'
 ];
 
-const sampleProducts = [
+const sampleProducts: Record<string, string>[] = [
   {
     SKU: 'T001',
     ID: '1',
