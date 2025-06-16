@@ -34,18 +34,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-cream min-h-screen`}
       >
-        <header className="w-full flex items-center gap-4 px-6 py-4 bg-tropicalBlue shadow-md">
+        <header className="sticky top-0 z-30 w-full flex items-center gap-4 px-6 py-4 bg-tropicalBlue shadow-lg">
           <span className="text-2xl font-bold text-white tracking-wide drop-shadow-lg">Accounting</span>
         </header>
-        <nav className="w-full bg-deepBlue text-white flex flex-wrap items-center px-4 py-2">
-          <ul className="flex flex-wrap gap-4 w-full justify-center md:justify-start">
+        <nav className="sticky top-[64px] z-20 w-full bg-white/90 backdrop-blur border-b border-tropicalBlue shadow-sm">
+          <ul className="flex flex-wrap gap-2 w-full justify-center md:justify-start px-4 py-2">
             {navLinks.map(link => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`px-4 py-2 rounded transition-colors font-semibold hover:bg-tropicalBlue/80 ${pathname === link.href ? 'bg-tropicalBlue text-white' : 'text-white'}`}
+                  className={`px-4 py-2 rounded-lg font-semibold transition-all duration-150 hover:bg-tropicalBlue/20 hover:text-tropicalBlue focus:bg-tropicalBlue/30 focus:text-tropicalBlue`}
                 >
                   {link.label}
                 </Link>
@@ -53,7 +53,7 @@ export default function RootLayout({
             ))}
           </ul>
         </nav>
-        <main>{children}</main>
+        <main className="max-w-7xl mx-auto w-full px-2 sm:px-6 py-6">{children}</main>
       </body>
     </html>
   );
