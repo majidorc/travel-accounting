@@ -3,28 +3,34 @@ import { useEffect, useState } from 'react';
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState('system');
+
   useEffect(() => {
     const root = window.document.documentElement;
     const initial = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    setTheme(localStorage.theme || initial);
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && initial === 'dark')) {
+    const saved = localStorage.theme || initial;
+    setTheme(saved);
+    if (saved === 'dark') {
       root.classList.add('dark');
     } else {
       root.classList.remove('dark');
     }
   }, []);
-  const toggle = () => {
+
+  useEffect(() => {
     const root = window.document.documentElement;
-    if (root.classList.contains('dark')) {
-      root.classList.remove('dark');
-      localStorage.theme = 'light';
-      setTheme('light');
-    } else {
+    if (theme === 'dark') {
       root.classList.add('dark');
       localStorage.theme = 'dark';
-      setTheme('dark');
+    } else if (theme === 'light') {
+      root.classList.remove('dark');
+      localStorage.theme = 'light';
     }
+  }, [theme]);
+
+  const toggle = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
   };
+
   return (
     <button
       aria-label="Toggle Dark Mode"
