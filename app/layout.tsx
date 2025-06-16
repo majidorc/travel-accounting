@@ -1,22 +1,10 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 import Link from 'next/link';
+import './globals.css';
 import ThemeToggle from './ThemeToggle';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "Accounting",
-  description: "Travel agency accounting dashboard",
+export const metadata = {
+  title: 'Accounting',
+  description: 'Travel agency accounting dashboard',
 };
 
 const navLinks = [
@@ -26,11 +14,7 @@ const navLinks = [
   { href: '/products', label: 'Product List' },
 ];
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="bg-cream dark:bg-black min-h-screen transition-colors">
